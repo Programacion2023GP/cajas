@@ -1,0 +1,240 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variables de color según tu paleta */
+:root {
+    --guinda-principal: #9B2242;
+    --guinda-secundario: #651D32;
+    --gris-cool: #474C55;
+    --gris: #727372;
+    --gris-claro: #B8B6AF;
+    --negro: #130D0E;
+    --blanco: #FFFFFF;
+}
+
+/* Fuentes personalizadas */
+@font-face {
+    font-family: 'ZapfHumanist';
+    src: url('/resources/fonts/ZapfHumanist/ZapfHumanist-Roman.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ZapfHumanist';
+    src: url('/resources/fonts/ZapfHumanist/ZapfHumanist-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Avenir';
+    src: url('/resources/fonts/AvenirLTPro/AvenirLTPro-Roman.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Avenir';
+    src: url('/resources/fonts/AvenirLTPro/AvenirLTPro-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* Clases personalizadas */
+.turno-display {
+    background: linear-gradient(135deg, var(--guinda-secundario) 0%, var(--guinda-principal) 100%);
+    padding: 2.5rem;
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.turno-display::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.1;
+}
+
+.turno-label {
+    font-family: 'Avenir', sans-serif;
+    font-weight: 500;
+    color: var(--gris-claro);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.turno-number {
+    font-family: 'ZapfHumanist', serif;
+    color: var(--blanco);
+    font-size: 6rem;
+    font-weight: bold;
+    border-radius: 10px;
+    text-shadow: 0 4px 8px rgba(19, 13, 14, 0.3);
+    letter-spacing: 1px;
+}
+
+.user-form {
+    background: var(--gris-claro);
+    padding: 2rem;
+    border-radius: 16px;
+    margin-bottom: 2.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    font-family: 'ZapfHumanist', serif;
+    font-weight: bold;
+    color: var(--guinda-secundario);
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+.text-primary {
+    color: var(--guinda-principal);
+}
+.text-secondary {
+    color: var(--guinda-secundario);
+}
+.text-gris-cool {
+    color: var(--gris-cool);
+}
+
+.form-control {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    font-family: 'Avenir', sans-serif;
+    font-size: 1rem;
+    color: var(--negro);
+    background: var(--blanco);
+    border: 2px solid var(--gris);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--guinda-principal);
+    box-shadow: 0 0 0 3px rgba(155, 34, 66, 0.1);
+}
+
+.form-control[readonly] {
+    background: var(--gris-claro);
+    border-color: var(--gris);
+    color: var(--gris-cool);
+    cursor: not-allowed;
+}
+
+/* Botón personalizado */
+.turno-button {
+    position: relative;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.turno-button:hover {
+    transform: scale(1.05);
+}
+
+.turno-button:active {
+    transform: scale(0.98);
+}
+
+.button-image {
+    width: 280px;
+    height: 280px;
+    /* filter: drop-shadow(0 8px 16px rgba(155, 34, 66, 0.3)); */
+    transition: filter 0.3s ease;
+}
+
+.turno-button:hover .button-image {
+    /* filter: drop-shadow(0 12px 24px rgba(155, 34, 66, 0.4)); */
+}
+
+.button-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    font-family: 'Avenir', serif;
+    font-weight: bold;
+    color: var(--blanco);
+    font-size: 1.5rem;
+    text-shadow: 0 2px 4px rgba(19, 13, 14, 0.3);
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+/* Animaciones */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+.pulse-animation {
+    animation: pulse 2s infinite;
+}
+
+/* Estado de carga */
+.loading .button-image {
+    opacity: 0.7;
+}
+
+.loading .button-text {
+    opacity: 0.7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .turno-number {
+        font-size: 3rem;
+    }
+    
+    .button-image {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .button-text {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .turno-number {
+        font-size: 2.5rem;
+    }
+    
+    .button-image {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .button-text {
+        font-size: 1rem;
+    }
+}
+
