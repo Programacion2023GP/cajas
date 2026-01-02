@@ -65,6 +65,9 @@
     background-size: 20px 20px;
     opacity: 0.1;
 }
+.turno-display:hover {
+    cursor: pointer;
+}
 
 .turno-label {
     font-family: 'Avenir', sans-serif;
@@ -116,6 +119,10 @@
 }
 .text-gris-cool {
     color: var(--gris-cool);
+}
+
+.cursor-pointer:hover {
+    cursor: pointer;
 }
 
 .form-control {

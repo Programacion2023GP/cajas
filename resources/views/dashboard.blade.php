@@ -5,7 +5,7 @@
          <div
             class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gris-claro via-white to-gris-claro opacity-30">
          </div>
-         <h2 class="relative py-6 text-6xl font-bold text-center text-white font-zapf">
+         <h2 class="relative py-6 text-6xl font-bold text-center text-white font-zapf" id="usuario-lbl">
             {{ Auth::user()->name }}
          </h2>
       </div>
@@ -135,8 +135,9 @@
             <div class="p-8">
                <!-- Display del turno actual -->
                @isset($turno)
-               <div class="turno-display pulse-animation">
-                  <span class="turno-label">Tu turno asignado</span>
+               <div id="repetirAnuncioBtn" onclick="repetirAnuncio()"
+                  class="turno-display pulse-animation pointer-cursor">
+                  <span class="turno-label">Tu turno asignado / Clic para anunciar nuevamente el turno asignado</span>
                   <div class="turno-number font-black font-zapf" id="turno-lbl">{{ $turno }}</div>
                </div>
                @endisset
