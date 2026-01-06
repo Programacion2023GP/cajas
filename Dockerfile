@@ -24,9 +24,14 @@ RUN chown -R www-data:www-data /var/www/html \
  && chmod -R 755 /var/www/html \
  && chmod -R 775 storage bootstrap/cache
 
-WORKDIR /var/www/html
+WORKDIR /var/www/html/public
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-RUN composer install --no-dev --optimize-autoloader
+RUN composer update composer install --no-dev --optimize-autoloader
 
 EXPOSE 80
+
+RUN php artisan config:clear \
+ && php artisan route:clear \
+ && php artisan view:clear
+
