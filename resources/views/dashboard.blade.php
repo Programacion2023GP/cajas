@@ -101,7 +101,7 @@
 
                      <div class="space-y-3">
                         <div class="relative">
-                           <input type="number" id="ajusteInput" min="0" placeholder="Ej: 125"
+                           <input type="text" id="ajusteInput" placeholder="Ej: A01"
                               class="w-full px-4 py-3 pl-12 text-lg font-bold text-center font-avenir border-2 border-gris-cool/30 rounded-xl focus:border-guinda-principal focus:ring-2 focus:ring-guinda-principal/20 transition-all duration-300"
                               onfocus="this.select()">
                            <div class="absolute left-4 top-1/2 transform -translate-y-1/2">

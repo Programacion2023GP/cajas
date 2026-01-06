@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Turno extends Model
 {
-    protected $table ='turnos';
+    use HasFactory;
+
+    protected $table = 'turnos';
+    protected $fillable = ['turno', 'caja'];
     protected $hidden = [
         'created_at',
         'updated_at',

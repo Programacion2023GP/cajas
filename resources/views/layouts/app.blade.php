@@ -161,16 +161,18 @@
    }
 
    async function ajustarConteo() {
-      const id = document.getElementById('ajusteInput').value;
+      const turno = document.getElementById('ajusteInput').value.trim().toUpperCase();
 
-      if (!id || isNaN(id) || id < 0) {
-         alert('Por favor ingresa un número válido');
+      // Validar formato de turno (ej: A01, B99, J99)
+      const turnoRegex = /^[A-J]\d{2}$/;
+      if (!turno || !turnoRegex.test(turno)) {
+         alert('Por favor ingresa un turno válido en formato LetraNúmero (ej: A01, B05, J99)');
          document.getElementById('ajusteInput').focus();
          return;
       }
 
-      if (confirm(`¿Ajustar el conteo al turno ${id}?`)) {
-         const url = '{{ route("ajuste", ":id") }}'.replace(':id', id);
+      if (confirm(`¿Ajustar el conteo al turno ${turno}?`)) {
+         const url = '{{ route("ajuste", ":turno") }}'.replace(':turno', turno);
 
          // Mostrar loading en el botón
          const button = event.target;

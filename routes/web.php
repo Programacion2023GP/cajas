@@ -25,26 +25,7 @@ Route::get('/reset', function () {
     DB::statement("TRUNCATE TABLE turnos;");
 })->name('reset');
 
-Route::get('/ajuste/{id}', function ($id) {
-    try {
-        // $before = DB::select("SHOW TABLE STATUS LIKE 'turnos'")[0]->Auto_increment;
-
-        DB::statement("ALTER TABLE turnos AUTO_INCREMENT = $id");
-
-        // $after = DB::select("SHOW TABLE STATUS LIKE 'turnos'")[0]->Auto_increment;
-
-        // dd([
-        //     'antes' => $before,
-        //     'despues' => $after
-        // ]);
-
-        // ✔ Se ejecutó sin error
-    } catch (\Throwable $e) {
-        // ❌ Falló
-        dd($e->getMessage());
-    }
-    // return view('auth.login');
-})->name('ajuste');
+Route::get('/ajuste/{turno}', [TurnosController::class, 'ajustarTurno'])->name('ajuste');
 
 Route::get(
     '/dashboard',
@@ -55,7 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::post('/turnos', [TurnosController::class, 'store'])->name('turnos');
+    Route::post('/turnos', [TurnosController::class, 'storeWhitLetter'])->name('turnos');
     Route::post('/repetir-anuncio', [TurnosController::class, 'repetirAnuncio'])->name('repetir.anuncio');
 });
 
