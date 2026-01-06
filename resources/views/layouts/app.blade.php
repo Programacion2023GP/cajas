@@ -261,7 +261,7 @@
             body: JSON.stringify({
                usuario: '{{ Auth::user()->name }}',
                turno: turno,
-               caja: '{{ Auth::user()->caja ?? "Caja 1" }}'
+               caja: '{{ Auth::user()->name ?? "Caja 1" }}'
             })
          });
 
